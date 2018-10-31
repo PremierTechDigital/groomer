@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Module file for the Groomer Refiner Examples module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function groomer_examples_help($route_name, $route_match) {
+  if ($route_name === 'help.page.groomer_refiner_examples') {
+    $output = '';
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t(
+        'Provides examples for using plugins to alter the output of Groomer files.'
+      ) . '</p>';
+    return $output;
+  }
+}

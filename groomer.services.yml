@@ -1,0 +1,43 @@
+services:
+  # Main Groomer service. Used to access Groomer functionality of the module across code. used for grooming entities and objects.
+  groomer.manager:
+    class: Drupal\groomer\Service\GroomerManager
+    arguments: ['@groomer.helpers', '@theme.manager', '@module_handler', '@event_dispatcher', '@config.factory', '@router.admin_context', '@current_route_match', '@cache.groomer']
+
+  # Helper functions used across the Groomer module.
+  groomer.helpers:
+    class: Drupal\groomer\Service\GroomerHelpers
+    arguments: ['@entity_type.bundle.info', '@entity.manager']
+
+  # Define Groomer Caching Bin
+  cache.groomer:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+    - { name: cache.groomer }
+    factory: cache_factory:get
+    arguments: [groomer]
+
+  # Handshake event subscriber service. Subscribes to grooming events and alters data with Handshake files.
+  groomer.event_subscriber.harmony:
+    # Event subscriber class that will listen for grooming events and alter the resulting data.
+    class: '\Drupal\groomer\EventSubscriber\HarmonyEventSubscriber'
+    arguments: ['@theme.manager']
+    # Tagged as an event_subscriber to register this subscriber with the event_dispatch service.
+    tags:
+    - { name: 'event_subscriber' }
+
+  # Plugin Manager for the Refinery
+  plugin.manager.groomer.refinery:
+    class: 'Drupal\groomer\PluginManager\Refinery\Refinery'
+    parent: default_plugin_manager
+    arguments:
+    - '@messenger'
+
+  # Refinery Event Subscriber service. Subscribes to grooming events and alters data through Refinery Plugins.
+  groomer.event_subscriber.refinery:
+    # Event subscriber class that will listen for grooming events and call the appropriate plugins to alter the resulting data.
+    class: '\Drupal\groomer\EventSubscriber\RefineryEventSubscriber'
+    arguments: ['@plugin.manager.groomer.refinery']
+    # Tagged as an event_subscriber to register this subscriber with the event_dispatch service.
+    tags:
+    - { name: 'event_subscriber' }

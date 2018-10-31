@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Module File for the Groomer REST extension module.
+ *
+ * Module that provides endpoints to facilitate retrieval of Drupal Entity data
+ * from external sources or other applications.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function groomer_rest_help($route_name, $route_match) {
+  if ($route_name === 'help.page.teardrop_rest') {
+    $output = '';
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t(
+        'Provide endpoints to facilitate retrieval of Drupal Entity data from external sources or other applications.'
+      ) . '</p>';
+    return $output;
+  }
+}

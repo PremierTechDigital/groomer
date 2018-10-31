@@ -1,0 +1,9 @@
+name: Groomer - Rest API
+type: module
+description: 'Provide endpoints to facilitate retrieval of Drupal Entity data from external sources or other applications.'
+core: 8.x
+package: Sid Lee Tools
+php: 7.1
+dependencies:
+  - groomer
+  - rest

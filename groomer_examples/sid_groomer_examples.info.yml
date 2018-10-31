@@ -1,0 +1,9 @@
+# Module Information
+name: Groomer Refiner Examples
+type: module
+description: 'Provides examples for using plugins to alter the output of Groomer files.'
+core: 8.x
+package: Example
+php: 7.1
+dependencies:
+- groomer

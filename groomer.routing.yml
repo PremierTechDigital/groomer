@@ -1,0 +1,8 @@
+# Groomer configuration form.
+groomer.config:
+  path: '/admin/structure/groomer/configuration'
+  defaults:
+    _form: '\Drupal\groomer\Form\GroomerConfigForm'
+    _title: 'Groomer Configuration'
+  requirements:
+    _permission: 'administer site configuration'

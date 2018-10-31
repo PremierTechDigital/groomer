@@ -1,0 +1,24 @@
+id: groomer_single_entity_resource
+plugin_id: groomer_single_entity_resource
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  PATCH:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie
+  DELETE:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

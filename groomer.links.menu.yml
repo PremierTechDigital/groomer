@@ -1,0 +1,7 @@
+# Groomer configuration form.
+groomer.config:
+  title: 'Groomer Configuration'
+  description: 'Configure groomer settings for this site.'
+  route_name: groomer.config
+  parent: 'system.admin_structure'
+  menu_name: groomer

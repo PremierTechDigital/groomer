@@ -1,0 +1,12 @@
+{
+    "name": "aigachu/groomer",
+    "description": "Provides a framework to facilitate pre-processing of Drupal Entities before theme template rendering.",
+    "type": "drupal-custom-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Kyle Serebour",
+            "email": "kserebour@sidlee.com"
+        }
+    ]
+}

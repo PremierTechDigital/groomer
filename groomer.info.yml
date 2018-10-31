@@ -1,0 +1,7 @@
+# Module Information
+name: Groomer Framework
+type: module
+description: 'Provides a framework to facilitate pre-processing of Drupal Entities before theme template rendering.'
+core: 8.x
+package: Sid Lee Tools
+php: 7.1

@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Module file for the Groomer module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function groomer_help($route_name, $route_match) {
+  if ($route_name === 'help.page.groomer') {
+    $output = '';
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t(
+        'Provides a framework to facilitate pre-processing of Drupal Entities before theme template rendering.'
+      ) . '</p>';
+    return $output;
+  }
+}
+
+/**
+ * Implements hook_cache_flush().
+ *
+ * @todo - Use events instead of a hook when events are core.
+ */
+function groomer_cache_flush() {
+  \Drupal::cache('groomer')->deleteAll();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @todo - Use events instead of a hook when events are core.
+ */
+function groomer_preprocess_node(&$variables) {
+  $variables['data'] = \Drupal::service('groomer.manager')->autoGroom($variables['node']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @todo - Use events instead of a hook when events are core.
+ */
+function groomer_preprocess_paragraph(&$variables) {
+  $variables['data'] = \Drupal::service('groomer.manager')->autoGroom($variables['paragraph']);
+}
