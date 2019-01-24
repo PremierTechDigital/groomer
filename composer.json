@@ -1,12 +1,24 @@
 {
-    "name": "aigachu/groomer",
-    "description": "Provides a framework to facilitate pre-processing of Drupal Entities before theme template rendering.",
+    "name": "sidlee/groomer",
+    "description": "Provides a framework to facilitate preprocessing of Drupal Entities before theme template rendering.",
     "type": "drupal-custom-module",
     "license": "proprietary",
     "authors": [
         {
-            "name": "Aigachu",
-            "email": "aigachu@gmail.com"
+            "name": "Kyle Serebour",
+            "email": "kserebour@sidlee.com"
+        },
+        {
+            "name": "Marc-Olivier Fortin",
+            "email": "mofortin@sidlee.com"
+        },
+        {
+            "name": "Nicolas Beaucage",
+            "email": "nbeaucage@sidlee.com"
+        },
+        {
+            "name": "Pascal Rioux",
+            "email": "prioux@sidlee.com"
         }
     ]
 }

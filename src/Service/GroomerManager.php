@@ -180,7 +180,7 @@ final class GroomerManager {
    *   Result of the grooming process. Returns data if successful.
    */
   public function autoGroom($object, array $flags = []) {
-    if ($this->config[GroomerConfig::AUTO_PRE_PROCESSOR]) {
+    if (isset($this->config[GroomerConfig::AUTO_PRE_PROCESSOR]) && $this->config[GroomerConfig::AUTO_PRE_PROCESSOR] === 1) {
       return $this->groom($object, $flags);
     }
   }

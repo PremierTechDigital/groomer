@@ -134,6 +134,10 @@ class GroomerConfigForm extends ConfigFormBase {
     // @todo - This will be changed to exclude certain content types altogether.
     $this->attachEntityExclusionsForm($form);
 
+    // Attach menu exclusions fields.
+    // @todo - This will be changed to exclude certain content types altogether.
+    $this->attachMenuExclusionsForm($form);
+
     // Return the form with all necessary fields.
     return parent::buildForm($form, $form_state);
   }
@@ -282,6 +286,7 @@ class GroomerConfigForm extends ConfigFormBase {
     $form[GroomerConfig::MENU_SETTINGS] = [
       '#type'  => 'details',
       '#title' => t('Enable grooming for select Menus'),
+      '#description' => t('Menu grooming can be very heavy. As a result, grooming for all menus is disabled by default. You can enable grooming for select menus here.'),
     ];
 
     // Loop in the list of menu names to set parts of the form.
@@ -297,7 +302,7 @@ class GroomerConfigForm extends ConfigFormBase {
 						If the box is left unchecked, the menu will not be groomed and the <strong>data</strong> variable will not be present in this menu's theme file.
 						</em>", ['@id' => $id]
         ),
-        '#default_value' => !empty($menu_settings[$id]['enabled']) ? $menu_settings[$id]['enabled'] : 0,
+        '#default_value' => !empty($menu_settings[$id]) ? $menu_settings[$id] : 0,
       ];
     }
   }
@@ -316,6 +321,7 @@ class GroomerConfigForm extends ConfigFormBase {
       ->set(GroomerConfig::HARMONY, $values[GroomerConfig::HARMONY])
       ->set(GroomerConfig::REMOVE_FIELD_UNDERSCORE_PREFIX, $values[GroomerConfig::REMOVE_FIELD_UNDERSCORE_PREFIX])
       ->set(GroomerConfig::ENTITY_TYPE_SETTINGS, $values[GroomerConfig::ENTITY_TYPE_SETTINGS])
+      ->set(GroomerConfig::MENU_SETTINGS, $values[GroomerConfig::MENU_SETTINGS])
       ->save();
 
     parent::submitForm($form, $form_state);

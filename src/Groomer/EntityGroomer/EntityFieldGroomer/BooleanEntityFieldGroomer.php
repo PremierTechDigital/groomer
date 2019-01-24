@@ -15,11 +15,14 @@ class BooleanEntityFieldGroomer extends EntityFieldGroomer {
    * {@inheritdoc}
    */
   public function process(array $value, int $i) {
+
+    // If the value is set, we want to return true.
     if ($value['value']) {
-      $value = TRUE;
+      return TRUE;
     }
 
-    return $value;
+    // Otherwise, we simply return false.
+    return FALSE;
   }
 
 }

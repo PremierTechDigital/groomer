@@ -45,3 +45,12 @@ function groomer_preprocess_node(&$variables) {
 function groomer_preprocess_paragraph(&$variables) {
   $variables['data'] = \Drupal::service('groomer.manager')->autoGroom($variables['paragraph']);
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @todo - Use events instead of a hook when events are core.
+ */
+function groomer_preprocess_menu(&$variables) {
+  $variables['data'] = \Drupal::service('groomer.manager')->autoGroom($variables);
+}
